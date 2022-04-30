@@ -1,0 +1,260 @@
+          /*
+* Base structure
+*/
+          html, body {
+            height: 100vh;
+            width: 100%;
+            overflow: auto;
+          }
+
+          body {
+            text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+            min-height: 420px;
+          }
+
+          h1, h4, th, a {
+            color: #0f408f;
+          }
+          
+          a, a:hover {
+           text-decoration: none;
+          }
+          
+          
+          .body-bg {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            margin: auto; 
+          }
+          
+          .body-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: -1;
+            background-image: url("../images/enzo-tommasi-bHwIQtp_z1I-unsplash.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            opacity: 0.5;
+          }
+
+          /*
+* Containers
+*/
+
+          div#main {
+            /*display: flex;*/
+            display: -webkit-flex;
+            flex-direction: column;
+            min-height: 100vh;
+            
+          }
+          
+          .image-upload {        
+           width: 90%;
+           flex-grow: 1;
+          }
+          
+
+          .color-palette {
+            flex-grow: 1;         
+          }
+          
+         
+          /*
+* index
+*/          
+          
+          h4 {
+           padding-top: 10vh;
+           padding-bottom: 10vh;
+          }
+          
+          .flash-msg {
+            font-size: 1rem;
+            color: red;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            margin-top: 0.25rem;
+          }
+
+          /*
+* palette display
+*/
+          .up-image, .rectangle, .table {
+            width: calc(195px + 21vw);
+          }
+
+          .up-image {
+            margin: auto;
+            display: block;
+          }
+
+          .rectangle {
+            height: 100px;
+            margin: 3% auto;
+          }
+
+          .colors-diplay {
+            justify-content: space-around;
+          }
+
+          .code-col, .code-col-2 {
+            display: none;
+          }
+          
+          .back {
+            display: inline-block;
+            padding-top: 0.5rem;
+          }
+          
+          .back:before {
+            content: "→";
+            } 
+
+          /*
+*  table
+*/
+          .table {
+            margin: auto;
+          }
+
+          .table>:not(caption)>*>* {
+            padding: 0.3rem 0.5rem;
+          }
+
+          .color-codes {
+            padding-top: 5%;
+            padding-bottom: 5%;
+          }
+
+          td {
+            text-align: end;
+          }
+          
+          /*
+*  footer
+*/         
+
+          .footer {
+            flex-basis: 50px;
+            font-size: 0.6rem;
+            text-align: center;
+            padding: 1.25rem 1.25rem 0.6rem 1.25rem;
+          }
+          
+          .foot{
+            font-size: 0.65rem;
+          }
+                    
+          
+          /*
+*  Media queries
+*/          
+
+          @media (max-width: 576px) {
+          
+             .col-sml {
+              width: calc(245px + 21vw);
+             }
+           
+          }
+
+          @media (min-width: 768px) {
+          
+             .image-upload {
+              width: 80%;
+             }
+             
+              .rectangle {
+                width: 100%;
+                height: 75px;
+              }
+              
+              .color-codes {
+                width:95%
+              }
+                                 
+              .colors-diplay {
+                --bs-gutter-x: 0;
+                justify-content: center;
+              }
+              
+             .footer {
+              font-size: 0.65rem;
+              }
+            
+            .foot{
+              font-size: 0.7rem;
+              } 
+              
+          }
+
+          @media (min-width: 992px) {
+          
+              .container {
+                max-width: 99vw;
+              }
+                
+              .rectangle {
+                height: 50px;
+              }
+  
+              th {
+                display: none;
+              }
+  
+              .code-col, .code-col-2 {
+                display: block;
+                width: 10%;
+                text-align: end;
+              }
+  
+              .code-th {
+                display: table-cell;
+              }
+              
+              #col-5, #col-10 {
+               margin-right: 5%;
+              }
+              
+            }
+  
+            @media (min-width: 1200px) {
+            
+              .image-upload {
+              width: 40%;
+              }
+             
+             .table>:not(caption)>*>* {
+                padding: 0.3rem 0.3rem;
+              }
+                          
+              .code-col {
+                width: 60px;
+              }
+                            
+               .code-col-2 {
+                display: none;
+              }
+              
+              #col-5, #col-10 {
+               margin-right: 0;
+              }
+              
+              td, th {
+                font-size: 0.9rem;
+              }
+          }
+
+          @media (min-width: 1400px) {
+                                 
+              td, th {
+                font-size: 1rem;
+              }
+          }
+

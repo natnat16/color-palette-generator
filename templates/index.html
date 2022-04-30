@@ -1,0 +1,33 @@
+{% include "header.html" %}
+
+
+<body class="body-bg">
+
+ <div class="container" id="main">
+
+  <div class="container image-upload">
+  <h1 class="text-center pb-1 pt-5">Color Palette Generator</h1>
+  
+  
+    <h4 class="px-1">Upload an image and find out what are its most common colors</h4>
+
+    <form action="{{ url_for('generate_palette') }}" method="POST" enctype="multipart/form-data" novalidate>
+        {{ form.csrf_token }}
+        <div class="form-input py-2">
+        {{ form.image }}
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <p class="flash-msg" role="alert">{{ messages[0] }}</p>
+          {% endif %}
+        {% endwith %}
+        </div>
+        <div class="form-input py-5">
+        {{ form.submit }}
+        </div>
+    </form>
+
+  </div>
+
+{% include "footer.html" %}
+
+

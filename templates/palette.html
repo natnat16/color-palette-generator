@@ -1,0 +1,93 @@
+{% include "header.html" %}
+
+
+<body>
+
+  <div class="container" id="main">
+  
+    <div class="container color-palette">
+      <a href="{{ url_for('home') }}" class="back">Back Home</a>
+      <h1 class="text-center pb-1 pt-3">Color Palette Generator</h1>     
+      <img src="{{ url_for('static', filename='uploads/{}'.format(image)) }}" class="up-image py-3">
+        
+      {% if not palette %}
+        
+        <div class="d-flex flex-column align-items-center py-4">
+          <strong class="pb-4">Loading...&nbsp;&nbsp;can take a few moments</strong>
+          <div class="spinner-border text-success" role="status" aria-hidden="true"></div>
+        </div>
+          <script type="text/javascript">checkForPalette()</script>
+        
+       {% else %}   
+        <div class="row colors-diplay">
+    
+          <div class="col-lg-2 col-xl-1 code-col">
+            <div class="rectangle px-0"></div>
+    
+            <table class="table table-borderless color-codes">
+              <tbody>
+                <tr>
+                  <th scope="row" class="code-th">RGB:</th>
+                </tr>
+                <tr>
+                  <th scope="row" class="code-th"> HEX: </th>
+                </tr>
+                <tr>
+                  <th scope="row" class="code-th">HSV: </th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          {% for color in palette %}
+            <div class="col-sml col-md-4 col-lg-2 col-xl-1" id="col-{{ loop.index }}">
+              <div class="rectangle px-1" style="background-color: {{ color['hex'] }};" id="rect-{{ loop.index }}" onclick="copyHex({{loop.index}});"></div>
+      
+              <table class="table table-borderless color-codes">
+                <tbody>
+                  <tr>
+                    <th scope="row">RGB:</th>
+                    <td>{{ color['rgb'] }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"> HEX: </th>
+                    <td id="hex-{{ loop.index }}">{{ color['hex'] }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">HSV: </th>
+                    <td>{{ color['hsv'] }}</td>
+                  </tr>
+                </tbody>
+              </table>
+      
+            </div>
+                           
+            {% if loop.index == 5%}   
+              <div class="col-lg-2 code-col-2">
+                <div class="rectangle px-0"></div>
+        
+                <table class="table table-borderless color-codes">
+                  <tbody>
+                    <tr>
+                      <th scope="row" class="code-th">RGB:</th>
+                    </tr>
+                    <tr>
+                      <th scope="row" class="code-th"> HEX: </th>
+                    </tr>
+                    <tr>
+                      <th scope="row" class="code-th">HSV: </th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            {% endif %}                                      
+  
+          {% endfor %}  
+        </div> <!--close row --> 
+        
+  
+     {% endif %} 
+    </div>
+
+
+  {% include "footer.html" %}
